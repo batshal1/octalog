@@ -4,7 +4,7 @@ on:
   push:
     branches: [ dev ]
   pull_request:
-    branches: [ dev ]
+    branches: [ opened, synchronize, reopened ]
 
 jobs:
   build:
@@ -24,5 +24,12 @@ jobs:
       run: |
         cd restful-web-services
         mvn -B package --file pom.xml
+    
+    - name: Cache SonarQube package
+      uses: action/cache@v1
+      with:
+        path: ~/.sonar/cache
+        key: ${{ runner.os }}-sonar
+        restore-keys: ${{ runner.os }}-sonar
         
    

@@ -22,11 +22,6 @@ jobs:
       with:
         java-version: '11'
         
-    - name: Build with Maven
-      run: |
-        cd restful-web-services
-        mvn -B package --file pom.xml
-        
     - name: Cache SonarCloud packages
       uses: actions/cache@v1
       with:

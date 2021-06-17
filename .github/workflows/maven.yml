@@ -28,6 +28,7 @@ jobs:
     - name: Build and push Docker Image
       uses: mr-smithers-excellent/docker-build-push@v5
       with:
+        dockerfile: cd restful-web-services
         image: batshalbhattarai/octalog-backend
         registry: docker.io
         username: ${{ secrets.DOCKER_USERNAME }}

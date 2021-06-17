@@ -25,3 +25,13 @@ jobs:
       run: |
         cd restful-web-services
         mvn -B package --file pom.xml
+    - name: Build and push Docker Image
+      uses: mr-smithers-excellent/docker-build-push@v5
+      with:
+        image: batshalbhattarai/octalog-backend
+        registry: docker.io
+        username: ${{ secrets.DOCKER_USERNAME }}
+        password: ${{ secrets.DOCKER_PASSWORD }}
+        
+    
+        

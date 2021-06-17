@@ -1,7 +1,7 @@
 # Start with a base image containing Java runtime
 FROM java:8
 
-ADD ./target/restful-web-services.jar //
+COPY restful-web-services.jar /restful-web-services/target/restful-web-services.jar
 
 # Run the jar file
-ENTRYPOINT ["java","-jar","restful-web-services.jar"]
+CMD ["java","-jar","restful-web-services.jar"]

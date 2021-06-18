@@ -21,9 +21,10 @@ jobs:
       - name: Analyse with SonarCLoud
         uses: sonarsource/sonarcloud-github-action@v1.3
         with:
+          projectBaseDir: ../restful-web-service/
           args: >
-            - Dsonar.organization=batshal1
-            - Dsonar.projectKey=batshal1_octalog
+            - Dsonar.organization = batshal1
+            - Dsonar.projectKey = batshal1_octalog
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}

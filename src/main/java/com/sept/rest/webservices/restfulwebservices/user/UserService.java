@@ -2,6 +2,10 @@ package com.sept.rest.webservices.restfulwebservices.user;
 
 import com.sept.rest.webservices.restfulwebservices.model.*;
 import org.modelmapper.ModelMapper;
+import com.sept.rest.webservices.restfulwebservices.model.DAOUser;
+import com.sept.rest.webservices.restfulwebservices.model.Profile;
+import com.sept.rest.webservices.restfulwebservices.model.ProfileRepository;
+import com.sept.rest.webservices.restfulwebservices.model.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -15,7 +19,6 @@ public class UserService {
 
     @Autowired
     ProfileRepository profileRepository;
-
 
     public List<DAOUser> retrieveUsersByUsername(String username){
         List<DAOUser> userList = userRepository.findByUsername(username);

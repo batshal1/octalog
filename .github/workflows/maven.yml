@@ -21,9 +21,7 @@ jobs:
         distribution: 'adopt'
         
     - name: Build with Maven
-      run: |
-        cd restful-web-services
-        mvn -B package --file pom.xml
+      run: mvn -B package --file pom.xml
     
 
         

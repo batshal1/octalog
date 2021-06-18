@@ -167,6 +167,5 @@
     <orderEntry type="library" scope="RUNTIME" name="Maven: org.springframework.boot:spring-boot-devtools:2.3.5.RELEASE" level="project" />
     <orderEntry type="library" name="Maven: org.springframework.boot:spring-boot:2.3.5.RELEASE" level="project" />
     <orderEntry type="library" name="Maven: org.springframework.boot:spring-boot-autoconfigure:2.3.5.RELEASE" level="project" />
-    <orderEntry type="library" name="Maven: org.modelmapper:modelmapper:2.4.4" level="project" />
   </component>
 </module>

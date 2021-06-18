@@ -1,7 +1,5 @@
 package com.sept.rest.webservices.restfulwebservices.user;
 
-import com.sept.rest.webservices.restfulwebservices.model.*;
-import org.modelmapper.ModelMapper;
 import com.sept.rest.webservices.restfulwebservices.model.DAOUser;
 import com.sept.rest.webservices.restfulwebservices.model.Profile;
 import com.sept.rest.webservices.restfulwebservices.model.ProfileRepository;

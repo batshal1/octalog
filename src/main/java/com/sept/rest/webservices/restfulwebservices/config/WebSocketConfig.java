@@ -41,6 +41,9 @@ public class WebSocketConfig implements WebSocketMessageBrokerConfigurer {
 //                    accessor.setUser(user);
                     System.out.println("+ Connected, TODO");
                 }
+                else {
+                    System.out.println("NullPointerException thrown!");
+                }
                 return message;
             }
         });

@@ -16,7 +16,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Clone Repository
-        uses: action/checkout@v2
+        uses: actions/checkout@v2
         
       - name: Analyse with SonarCLoud
         uses: sonarsource/sonarcloud-github-action@v1.3

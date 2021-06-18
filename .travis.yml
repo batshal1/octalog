@@ -20,7 +20,7 @@ matrix:
         - "export DISPLAY=:99.0"
         - "npm config set spin false"
       before_script:
-        - "cd client/app"
+        - "cd Client/app"
         - "rm -rf node_modules"
         - sudo apt-get update
         - sudo apt-get install -y libappindicator1 fonts-liberation
@@ -32,7 +32,7 @@ matrix:
         - travis_wait 30 nohup mvn spring-boot:run &
       script: 
         - "cd .."
-        - "cd frontend/app"
+        - "cd Client/app"
         - "npm rebuild node-sass"
         - "nohup npm start &"
         - sleep 5

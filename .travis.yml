@@ -37,4 +37,3 @@ matrix:
         - "nohup npm start &"
         - sleep 5
         - "npm run test"
-        - "npm run wdio"

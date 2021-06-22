@@ -13,7 +13,6 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.util.ArrayList;
 import java.util.List;
@@ -33,10 +32,10 @@ public class JwtUserDetailsService implements UserDetailsService {
 	private PasswordEncoder bcryptEncoder;
 
 	@Autowired
-	private UserRepository userRepository;
+	private UserJpaRepository userJpaRepository;
 
 	@Autowired
-	private ProfileRepository profileRepository;
+	private ProfileJpaRepository profileJpaRepository;
 
 	@Autowired
 	private DBFileRepository dbFileRepository;
@@ -70,7 +69,7 @@ public class JwtUserDetailsService implements UserDetailsService {
 
 		}
 
-		List<DAOUser> exists = userRepository.findByUsername(user.getUsername());
+		List<DAOUser> exists = userJpaRepository.findByUsername(user.getUsername());
 		if (exists.isEmpty()) {
 			DAOUser newUser = new DAOUser();
 			newUser.setUsername(user.getUsername());
@@ -83,17 +82,17 @@ public class JwtUserDetailsService implements UserDetailsService {
 	}
 
 	public Profile assignAvatar(String username, DBFile file) {
-		Profile profile = profileRepository.findByUsername(username);
+		Profile profile = profileJpaRepository.findByUsername(username);
 		profile.setAvatar(file.getFileURL());
 
-		return profileRepository.save(profile);
+		return profileJpaRepository.save(profile);
 	}
 
 	public Profile assignBackground(String username, DBFile file) {
-		Profile profile = profileRepository.findByUsername(username);
+		Profile profile = profileJpaRepository.findByUsername(username);
 		profile.setBackground(file.getFileURL());
 
-		return profileRepository.save(profile);
+		return profileJpaRepository.save(profile);
 	}
 
 	public Profile update(ProfileDTO profile) throws InvalidInputException,DuplicateValueException{
@@ -127,7 +126,7 @@ public class JwtUserDetailsService implements UserDetailsService {
 		}
 		
 		
-		Profile exists = profileRepository.findByUsername(profile.getUsername());
+		Profile exists = profileJpaRepository.findByUsername(profile.getUsername());
 		Profile newProfile = new Profile();
 
 		if (exists == null) {
@@ -146,13 +145,13 @@ public class JwtUserDetailsService implements UserDetailsService {
 		newProfile.setEmail(profile.getEmail());
 		newProfile.setAboutme(profile.getAboutme());
 
-		return profileRepository.save(newProfile);
+		return profileJpaRepository.save(newProfile);
 
 	}
 
 	public boolean checkUsername(String username)  {
 		boolean exist = false;
-		List<DAOUser> found = userRepository.findByUsername(username);
+		List<DAOUser> found = userJpaRepository.findByUsername(username);
 		if (found.isEmpty()) {
 			exist = false;
 		} else {
@@ -163,7 +162,7 @@ public class JwtUserDetailsService implements UserDetailsService {
 
 	public boolean checkEmail(String email) {
 		boolean exist = false;
-		Profile found = profileRepository.findByEmail(email);
+		Profile found = profileJpaRepository.findByEmail(email);
 		if (found == null) {
 			exist = false;
 		} else {
@@ -174,7 +173,7 @@ public class JwtUserDetailsService implements UserDetailsService {
 
 	public boolean checkPhonenumber(String phonenumber) {
 		boolean exist = false;
-		Profile found = profileRepository.findByPhonenumber(phonenumber);
+		Profile found = profileJpaRepository.findByPhonenumber(phonenumber);
 		if (found == null) {
 			exist = false;
 		} else {
@@ -188,7 +187,7 @@ public class JwtUserDetailsService implements UserDetailsService {
 	 * Object of a user, and the username to be set
 	 */
 	public DAOUser editUsername(UserDTO user, String username) throws UserExistedException, InvalidInputException {
-		List<DAOUser> exists = userRepository.findByUsername(user.getUsername());
+		List<DAOUser> exists = userJpaRepository.findByUsername(user.getUsername());
 		if (exists.isEmpty()) {
 			DAOUser newUser = new DAOUser();
 			newUser.setUsername(username);

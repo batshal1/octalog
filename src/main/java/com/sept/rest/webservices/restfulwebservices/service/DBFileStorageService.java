@@ -3,10 +3,8 @@ package com.sept.rest.webservices.restfulwebservices.service;
 import com.sept.rest.webservices.restfulwebservices.Exception.FileStorageException;
 import com.sept.rest.webservices.restfulwebservices.Exception.MyFileNotFoundException;
 import com.sept.rest.webservices.restfulwebservices.dao.DBFileRepository;
-import com.sept.rest.webservices.restfulwebservices.dao.UserDao;
 import com.sept.rest.webservices.restfulwebservices.model.DBFile;
-import com.sept.rest.webservices.restfulwebservices.model.Profile;
-import com.sept.rest.webservices.restfulwebservices.model.ProfileRepository;
+import com.sept.rest.webservices.restfulwebservices.model.ProfileJpaRepository;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,7 +22,7 @@ public class DBFileStorageService  {
     private DBFileRepository dbFileRepository;
 
     @Autowired
-    private ProfileRepository profileRepository;
+    private ProfileJpaRepository profileJpaRepository;
 
     public DBFile storeFile(MultipartFile file) {
         // Normalize file name

@@ -1,11 +1,9 @@
 package com.sept.rest.webservices.restfulwebservices.model;
 
-import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.stereotype.Repository;
+import java.util.List;
 
-@Repository
-public interface ProfileRepository extends JpaRepository<Profile, Long> {
-	Profile findByUsername(String username);
-	Profile findByEmail(String email);
-	Profile findByPhonenumber(String phonenumber);
+public interface ProfileRepository {
+
+    Profile findByUsername(String username);
+    List<Profile> findAll();
 }

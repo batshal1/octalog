@@ -2,8 +2,8 @@ package com.sept.rest.webservices.restfulwebservices.user;
 
 import com.sept.rest.webservices.restfulwebservices.model.DAOUser;
 import com.sept.rest.webservices.restfulwebservices.model.Profile;
+import com.sept.rest.webservices.restfulwebservices.model.ProfileJpaRepository;
 import com.sept.rest.webservices.restfulwebservices.model.ProfileRepository;
-import com.sept.rest.webservices.restfulwebservices.model.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

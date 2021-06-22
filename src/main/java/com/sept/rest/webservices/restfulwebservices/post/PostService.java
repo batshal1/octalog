@@ -2,7 +2,8 @@ package com.sept.rest.webservices.restfulwebservices.post;
 
 
 import com.sept.rest.webservices.restfulwebservices.model.DAOUser;
-import com.sept.rest.webservices.restfulwebservices.model.UserRepository;
+import com.sept.rest.webservices.restfulwebservices.model.UserJpaRepository;
+import com.sept.rest.webservices.restfulwebservices.user.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -11,6 +12,7 @@ import java.util.List;
 @Service
 public class PostService {
 
+    @Autowired
     PostRepository postRepository;
 
     @Autowired

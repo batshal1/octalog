@@ -11,11 +11,16 @@ import java.util.List;
 @Service
 public class PostService {
 
-    @Autowired
-    PostJpaRepository postJpaRepository;
+    PostRepository postRepository;
 
     @Autowired
     UserRepository userRepository;
+
+     public PostService(PostRepository postRepository){
+    this.postRepository = postRepository;
+    }
+
+
 
     public List<DAOUser> retrieveAllUsers(){
         List<DAOUser> userList = userRepository.findAll();
@@ -23,34 +28,34 @@ public class PostService {
     }
 
     public List<Post> retrieveAllPosts(){
-        List<Post> postList = postJpaRepository.findAll();
+        List<Post> postList = postRepository.findAll();
         return postList;
     }
 
     public List<Post> retrieveByUsername(String username){
-        List<Post> listFromUsername = postJpaRepository.findByUsername(username);
+        List<Post> listFromUsername = postRepository.findByUsername(username);
         return listFromUsername;
     }
 
     public Post retrieveById(Long id){
-        return postJpaRepository.findById(id).get();
+        return postRepository.findById(id);
     }
 
     public void DeleteById(Long id){
-        postJpaRepository.deleteById(id);
+        postRepository.deleteById(id);
     }
 
     public Post submitPostsToDB(Post post){
-        return postJpaRepository.save(post);
+        return postRepository.save(post);
     }
 
     public List<PostComment> retrieveCommentsById(Long id){
-        List<PostComment> commentList = postJpaRepository.findById(id).get().getComments();
+        List<PostComment> commentList = postRepository.findById(id).getComments();
         return commentList;
     }
 
     public Post submitComment(Long id, PostComment comment){
-        return postJpaRepository.findById(id).get().addComment(comment);
+        return postRepository.findById(id).addComment(comment);
     }
 
 }
